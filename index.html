@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="or">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>Odisha Jami Mapa - ଓଡ଼ିଶା ଜମି ମାପ | Land Area Converter</title>
+    <meta name="description" content="Calculate and convert Odisha land measurements accurately. Convert Bati, Mana, Guntha, Decimal, Biswa, Acre, and Square Feet with dynamic visual maps.">
+    <meta name="keywords" content="Odisha land measurement, jami mapa, bati, mana, guntha, decimal, biswa, acre conversion, land record odisha, bhulekh odisha, Sandeep Biswal G">
+    <meta name="author" content="Sandeep Biswal G">
+    <link rel="canonical" href="https://imsbg.github.io/odisha-jami-mapa/">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Oriya:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-color: #F4F1EA; 
+            --primary-text: #3D2613; 
+            --accent-color: #D35400; 
+            --card-bg: #FFFFFF;
+            --border-color: #E2D5BA;
+            --highlight: #FFF8EE;
+            --promo-bg: #FFFFFF;
+            --font-main: 'Noto Sans Oriya', sans-serif;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-color);
+            color: var(--primary-text);
+            line-height: 1.6;
+            padding-bottom: 90px; 
+        }
+
+        /* Sticky Pill Header */
+        .header-wrapper {
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            background-color: var(--bg-color);
+            padding: 15px 20px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: var(--card-bg);
+            border-radius: 50px;
+            padding: 10px 25px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border: 1px solid var(--border-color);
+        }
+
+        .title-group {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            color: var(--accent-color);
+            line-height: 1.1;
+        }
+
+        .subtitle {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #777;
+        }
+
+        /* Language Toggle */
+        .lang-toggle {
+            display: flex;
+            gap: 5px;
+            background: var(--bg-color);
+            padding: 4px;
+            border-radius: 30px;
+            border: 1px solid var(--border-color);
+        }
+
+        .lang-btn {
+            background: transparent;
+            border: none;
+            color: var(--primary-text);
+            padding: 6px 14px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            font-family: var(--font-main);
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .lang-btn.active {
+            background: var(--accent-color);
+            color: white;
+            box-shadow: 0 2px 8px rgba(211, 84, 0, 0.3);
+        }
+
+        /* Layout Container */
+        .container {
+            display: flex;
+            flex-direction: column;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px 20px;
+            gap: 20px;
+        }
+
+        /* Panels */
+        .panel {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 25px;
+            box-shadow: 0 6px 25px rgba(0,0,0,0.04);
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px dashed var(--border-color);
+            padding-bottom: 12px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: var(--accent-color);
+            font-size: 1.4rem;
+        }
+
+        /* Inputs & Selects */
+        .input-group {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        input[type="number"], select {
+            padding: 12px 15px;
+            border: 2px solid var(--border-color);
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-family: var(--font-main);
+            color: var(--primary-text);
+            outline: none;
+            transition: var(--transition);
+            background: #FAFAFA;
+        }
+        
+        input[type="number"] {
+            flex: 1;
+            font-weight: bold;
+        }
+
+        input[type="number"]:focus, select:focus {
+            border-color: var(--accent-color);
+            background: #FFF;
+            box-shadow: 0 0 0 3px rgba(211, 84, 0, 0.1);
+        }
+
+        /* Results List */
+        .result-list {
+            list-style: none;
+            flex-grow: 1;
+        }
+
+        .result-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 14px 18px;
+            margin-bottom: 12px;
+            background: var(--highlight);
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .result-value {
+            color: var(--accent-color);
+            font-size: 1.2rem;
+        }
+
+        /* Dynamic Visualization Area */
+        .visual-control {
+            max-width: 200px;
+            font-size: 0.9rem;
+            padding: 8px;
+        }
+
+        .visual-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start; /* Changed from center to allow scrolling */
+            min-height: 380px;
+            text-align: center;
+            background: #FAFAFA;
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .visual-box-wrapper {
+            margin: 20px 0;
+            animation: popIn 0.3s ease-out;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .visual-box {
+            background-color: #E2B270; /* Field color */
+            border: 4px solid #8B5A2B;
+            border-radius: 8px;
+            display: grid;
+            gap: 2px;
+            padding: 4px;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.1), 0 5px 15px rgba(0,0,0,0.15);
+            max-width: 100%; 
+            max-height: 350px; /* Limits height, enables scrolling for huge maps */
+            overflow-y: auto;
+        }
+
+        /* Custom Scrollbar for Map */
+        .visual-box::-webkit-scrollbar { width: 6px; }
+        .visual-box::-webkit-scrollbar-track { background: #D3A76B; border-radius: 8px; }
+        .visual-box::-webkit-scrollbar-thumb { background: #8B5A2B; border-radius: 8px; }
+
+        .visual-grid-item {
+            background-color: #F0CE9B;
+            border: 1px solid #C49354;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9rem;
+            color: #63401F;
+        }
+
+        .dimension-text {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-top: 15px;
+            color: var(--accent-color);
+            background: #FFF;
+            padding: 6px 18px;
+            border-radius: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            display: inline-block;
+        }
+
+        .summary-text {
+            margin-top: 20px;
+            font-weight: bold;
+            color: var(--primary-text);
+            font-size: 1.25rem;
+            background: #EAE3D2;
+            padding: 12px 20px;
+            border-radius: 10px;
+            width: 100%;
+        }
+
+        .summary-sqft {
+            font-size: 1.05rem;
+            color: #555;
+            display: block;
+            margin-top: 5px;
+        }
+
+        .warning-text {
+            font-size: 0.85rem;
+            color: #D35400;
+            margin-top: 8px;
+            font-weight: 600;
+        }
+
+        .info-card {
+            background: var(--highlight);
+            padding: 18px;
+            border-radius: 12px;
+            margin-top: 25px;
+            width: 100%;
+            text-align: left;
+            border: 1px solid var(--border-color);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 10px 20px 30px;
+            font-size: 0.9rem;
+            color: #888;
+        }
+        
+        footer a { color: var(--accent-color); text-decoration: none; font-weight: bold; }
+
+        /* Sticky Promo Footer */
+        .sticky-promo {
+            position: fixed;
+            bottom: 0; left: 0; width: 100%;
+            background: var(--promo-bg);
+            box-shadow: 0 -4px 15px rgba(0,0,0,0.08);
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 12px 20px; z-index: 1000;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .promo-content { display: flex; align-items: center; gap: 15px; }
+        .promo-logo { width: 45px; height: 45px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        .promo-text-wrap { display: flex; flex-direction: column; }
+        .promo-title { font-weight: 700; color: #2C3E50; font-size: 1rem; margin-bottom: 2px; }
+        .promo-desc { font-size: 0.75rem; color: #666; }
+        .promo-btn {
+            background: #27AE60; color: #FFF; text-decoration: none;
+            padding: 8px 18px; border-radius: 25px; font-weight: 700; font-size: 0.9rem;
+            transition: background 0.3s; white-space: nowrap;
+            box-shadow: 0 4px 10px rgba(39, 174, 96, 0.3);
+        }
+        .promo-btn:hover { background: #219653; }
+
+        /* Animations */
+        @keyframes popIn {
+            0% { transform: scale(0.95); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        /* Responsive Design */
+        @media (min-width: 850px) {
+            .container { flex-direction: row; align-items: stretch; }
+            .panel { flex: 1; }
+        }
+
+        @media (max-width: 600px) {
+            .header-wrapper { padding: 10px 15px; }
+            header { flex-direction: row; padding: 8px 15px; }
+            h1 { font-size: 1.3rem; }
+            .subtitle { font-size: 0.7rem; }
+            .lang-btn { padding: 4px 10px; font-size: 0.8rem; }
+            .panel { padding: 15px; }
+            .input-group { flex-direction: column; }
+            .panel-header { flex-direction: column; gap: 10px; align-items: flex-start; }
+            .visual-control { max-width: 100%; width: 100%; }
+            .sticky-promo { padding: 10px; }
+            .promo-logo { width: 38px; height: 38px; }
+            .promo-title { font-size: 0.9rem; }
+            .promo-desc { font-size: 0.7rem; }
+            .promo-btn { padding: 6px 15px; font-size: 0.85rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sticky Rounded Pill Header -->
+    <div class="header-wrapper">
+        <header>
+            <div class="title-group">
+                <h1 id="main-title">ଜମି ମାପ</h1>
+                <div class="subtitle" id="sub-title">ଓଡ଼ିଶାର ସାଧାରଣ ହିସାବ</div>
+            </div>
+            <div class="lang-toggle">
+                <button class="lang-btn active" onclick="setLanguage('or')" id="btn-or">ଓଡ଼ିଆ</button>
+                <button class="lang-btn" onclick="setLanguage('en')" id="btn-en">ENG</button>
+            </div>
+        </header>
+    </div>
+
+    <div class="container">
+        <!-- Left Panel: Converter -->
+        <div class="panel">
+            <div class="panel-header">
+                <h2 id="convert-title">ହିସାବ କରନ୍ତୁ</h2>
+            </div>
+            
+            <div class="input-group">
+                <input type="number" id="inputValue" value="2" min="0" step="any" oninput="handleValueChange()">
+                <select id="inputUnit" onchange="handleUnitChange()">
+                    <option value="bati" id="opt-bati">ବାଟି (Bati)</option>
+                    <option value="mana" id="opt-mana">ମାଣ (Mana)</option>
+                    <option value="acre" id="opt-acre">ଏକର (Acre)</option>
+                    <option value="guntha" id="opt-guntha" selected>ଗୁଣ୍ଠ (Guntha)</option>
+                    <option value="decimal" id="opt-decimal">ଡିସିମିଲ୍ (Decimal)</option>
+                    <option value="biswa" id="opt-biswa">ବିଶ୍ୱା (Biswa)</option>
+                    <option value="sqft" id="opt-sqft">ବର୍ଗ ଫୁଟ (Sq Ft)</option>
+                </select>
+            </div>
+
+            <ul class="result-list" id="resultsContainer">
+                <!-- Results injected here via JS -->
+            </ul>
+        </div>
+
+        <!-- Right Panel: Visualization -->
+        <div class="panel">
+            <div class="panel-header">
+                <h2 id="visual-title">ଚିତ୍ରାତ୍ମକ ବୁଝାମଣା</h2>
+                <select id="visualSelector" class="visual-control" onchange="updateVisualization()">
+                    <option value="mana" id="vis-opt-mana">ମାଣ (୨୫ ଗୁଣ୍ଠ)</option>
+                    <option value="guntha" id="vis-opt-guntha" selected>ଗୁଣ୍ଠ (୪ ଡିସିମିଲ୍)</option>
+                    <option value="decimal" id="vis-opt-decimal">ଡିସିମିଲ୍ (୪ ବିଶ୍ୱା)</option>
+                </select>
+            </div>
+            
+            <div class="visual-container" id="visualContainer">
+                <!-- Visuals injected here via JS -->
+            </div>
+
+            <!-- Chain Info Panel -->
+            <div class="info-card" id="chainInfo">
+                <strong id="chain-title">ଅମିନଙ୍କ ଚେନ୍ ହିସାବ:</strong><br>
+                <span id="chain-desc" style="display:block; margin-top:5px; color:#555;">
+                    ୧ କଡ଼ି = ୭.୯୨ ଇଞ୍ଚ<br>
+                    ୧୦୦ କଡ଼ି = ୧ ଚେନ୍ = ୬୬ ଫୁଟ<br>
+                    ୬୬ ଫୁଟ × ୬୬ ଫୁଟ = ୧୦ ଡିସିମିଲ୍
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Standard Footer -->
+    <footer>
+        Developed by <a href="https://imsbg.github.io/odisha-jami-mapa/">Sandeep Biswal G</a> | &copy; <span id="currentYear"></span> All Rights Reserved
+    </footer>
+
+    <!-- Non-Closable Sticky Promo Footer -->
+    <div class="sticky-promo">
+        <div class="promo-content">
+            <img src="https://imsbg.github.io/odiabhasa/images/app.png" alt="Odia Bhasa App Logo" class="promo-logo">
+            <div class="promo-text-wrap">
+                <div class="promo-title">Odia Bhasa App</div>
+                <div class="promo-desc" id="promo-desc-text">ଶିଖିବା ଓ ପଢିବାପାଇଁ ସର୍ବଶ୍ରେଷ୍ଠ ଓଡ଼ିଆ ଆପ୍ ‎</div>
+            </div>
+        </div>
+        <a href="https://play.google.com/store/apps/details?id=in.sandeep.odiabhasa" target="_blank" class="promo-btn" id="promo-btn-text">Download</a>
+    </div>
+
+    <script>
+        // --- Configuration & Data ---
+        let currentLang = 'or'; 
+        
+        const unitRates = {
+            bati: 871200,   
+            mana: 43560,    
+            acre: 43560,    
+            guntha: 1742.4, 
+            decimal: 435.6, 
+            biswa: 108.9,   
+            sqft: 1
+        };
+
+        const translations = {
+            'en': {
+                mainTitle: "Jami Mapa",
+                subTitle: "Odisha Standard Land Measurement",
+                convertTitle: "Calculate Area",
+                visualTitle: "Visualization",
+                chainTitle: "Amina's Chain Calculation:",
+                chainDesc: "1 Kadi = 7.92 inches<br>100 Kadi = 1 Chain = 66 ft<br>66 ft × 66 ft = 10 Decimal",
+                promoDesc: "Best Odia App for Learning & Reading",
+                promoBtn: "Download",
+                total: "Total",
+                noValue: "No Value",
+                tooLarge: "(Number too large for individual grid boxes)",
+                warningFraction: "* The grid displays rounded whole numbers (",
+                units: { bati: "Bati", mana: "Mana", acre: "Acre", guntha: "Guntha", decimal: "Decimal", biswa: "Biswa", sqft: "Sq Ft" },
+                visOpts: {
+                    mana: "Mana (25 Guntha)",
+                    guntha: "Guntha (4 Decimal)",
+                    decimal: "Decimal (4 Biswa)"
+                }
+            },
+            'or': {
+                mainTitle: "ଜମି ମାପ",
+                subTitle: "ଓଡ଼ିଶାର ସାଧାରଣ ହିସାବ",
+                convertTitle: "ହିସାବ କରନ୍ତୁ",
+                visualTitle: "ଚିତ୍ରାତ୍ମକ ବୁଝାମଣା",
+                chainTitle: "ଅମିନଙ୍କ ଚେନ୍ (Chain) ହିସାବ:",
+                chainDesc: "୧ କଡ଼ି = ୭.୯୨ ଇଞ୍ଚ<br>୧୦୦ କଡ଼ି = ୧ ଚେନ୍ = ୬୬ ଫୁଟ<br>୬୬ ଫୁଟ × ୬୬ ଫୁଟ = ୧୦ ଡିସିମିଲ୍",
+                promoDesc: "ଶିଖିବା ଓ ପଢିବାପାଇଁ ସର୍ବଶ୍ରେଷ୍ଠ ଓଡ଼ିଆ ଆପ୍ ‎",
+                promoBtn: "ଡାଉନଲୋଡ୍",
+                total: "ସମୁଦାୟ",
+                noValue: "ମୂଲ୍ୟ ନାହିଁ",
+                tooLarge: "(ଚିତ୍ର ଅଙ୍କନ ପାଇଁ ସଂଖ୍ୟାଟି ବହୁତ ବଡ଼)",
+                warningFraction: "* ଚିତ୍ରଟି କେବଳ ପୂର୍ଣ୍ଣ ସଂଖ୍ୟା ଦର୍ଶାଉଛି (",
+                units: { bati: "ବାଟି", mana: "ମାଣ", acre: "ଏକର", guntha: "ଗୁଣ୍ଠ", decimal: "ଡିସିମିଲ୍", biswa: "ବିଶ୍ୱା", sqft: "ବର୍ଗ ଫୁଟ" },
+                visOpts: {
+                    mana: "ମାଣ (୨୫ ଗୁଣ୍ଠ)",
+                    guntha: "ଗୁଣ୍ଠ (୪ ଡିସିମିଲ୍)",
+                    decimal: "ଡିସିମିଲ୍ (୪ ବିଶ୍ୱା)"
+                }
+            }
+        };
+
+        // --- Helper Functions ---
+        function toOdiaNum(num) {
+            let formattedNum = Number(num).toLocaleString('en-IN', { maximumFractionDigits: 3 });
+            if (currentLang === 'en') return formattedNum;
+            
+            const odiaDigits = ['୦', '୧', '୨', '୩', '୪', '୫', '୬', '୭', '୮', '୯'];
+            let result = '';
+            for (let i = 0; i < formattedNum.length; i++) {
+                let char = formattedNum[i];
+                if (char >= '0' && char <= '9') {
+                    result += odiaDigits[parseInt(char)];
+                } else {
+                    result += char; 
+                }
+            }
+            return result;
+        }
+
+        // --- Core Logic ---
+        function setLanguage(lang) {
+            currentLang = lang;
+            
+            const newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?' + (lang === 'or' ? 'odia' : 'en');
+            window.history.replaceState({path: newUrl}, '', newUrl);
+
+            document.getElementById('btn-or').classList.toggle('active', lang === 'or');
+            document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+            
+            document.getElementById('main-title').innerText = translations[lang].mainTitle;
+            document.getElementById('sub-title').innerText = translations[lang].subTitle;
+            document.getElementById('convert-title').innerText = translations[lang].convertTitle;
+            document.getElementById('visual-title').innerText = translations[lang].visualTitle;
+            document.getElementById('chain-title').innerText = translations[lang].chainTitle;
+            document.getElementById('chain-desc').innerHTML = translations[lang].chainDesc;
+            document.getElementById('promo-desc-text').innerText = translations[lang].promoDesc;
+            document.getElementById('promo-btn-text').innerText = translations[lang].promoBtn;
+            
+            Object.keys(translations.en.units).forEach(key => {
+                document.getElementById(`opt-${key}`).innerText = translations[lang].units[key];
+            });
+            Object.keys(translations.en.visOpts).forEach(key => {
+                document.getElementById(`vis-opt-${key}`).innerText = translations[lang].visOpts[key];
+            });
+
+            calculateConversions();
+            updateVisualization();
+        }
+
+        function handleValueChange() {
+            calculateConversions();
+            updateVisualization();
+        }
+
+        function handleUnitChange() {
+            calculateConversions();
+            syncVisualSelector(); 
+            updateVisualization();
+        }
+
+        function syncVisualSelector() {
+            const inputUnit = document.getElementById('inputUnit').value;
+            const visSelect = document.getElementById('visualSelector');
+            
+            if (['bati', 'mana', 'acre'].includes(inputUnit)) visSelect.value = 'mana';
+            else if (inputUnit === 'guntha') visSelect.value = 'guntha';
+            else if (['decimal', 'biswa', 'sqft'].includes(inputUnit)) visSelect.value = 'decimal';
+        }
+
+        function calculateConversions() {
+            let val = parseFloat(document.getElementById('inputValue').value) || 0;
+            const selectedUnit = document.getElementById('inputUnit').value;
+            const baseSqft = val * unitRates[selectedUnit];
+            
+            const resultsContainer = document.getElementById('resultsContainer');
+            resultsContainer.innerHTML = ''; 
+
+            const displayOrder = ['bati', 'mana', 'acre', 'guntha', 'decimal', 'biswa', 'sqft'];
+            
+            displayOrder.forEach((unit) => {
+                if(unit === selectedUnit) return; 
+                
+                const convertedValue = baseSqft / unitRates[unit];
+                const li = document.createElement('li');
+                li.className = 'result-item';
+                li.innerHTML = `
+                    <span>${translations[currentLang].units[unit]}</span>
+                    <span class="result-value">${toOdiaNum(convertedValue)}</span>
+                `;
+                resultsContainer.appendChild(li);
+            });
+        }
+
+        function updateVisualization() {
+            const container = document.getElementById('visualContainer');
+            const visType = document.getElementById('visualSelector').value;
+            const dict = translations[currentLang];
+            
+            let inputVal = parseFloat(document.getElementById('inputValue').value) || 0;
+            const inputUnit = document.getElementById('inputUnit').value;
+            const baseSqft = inputVal * unitRates[inputUnit];
+            
+            // Calculate how many of the selected Visual Type we have
+            let targetVal = baseSqft / unitRates[visType];
+            
+            let subUnit = '';
+            let multiplier = 1;
+            let cols = 2;
+            let boxSize = 45;
+            let formulaText = "";
+
+            // Dynamic grid configuration based on what we are visualizing
+            if (visType === 'mana') {
+                subUnit = 'guntha';
+                multiplier = 25; // 1 Mana = 25 Guntha boxes
+                cols = 5;        // Draw in 5 columns (5x5 grid per mana)
+                boxSize = 35;
+                formulaText = `${toOdiaNum(1)} ${dict.units.mana} = ${toOdiaNum(43560)} ${dict.units.sqft}`;
+            } else if (visType === 'guntha') {
+                subUnit = 'decimal';
+                multiplier = 4;  // 1 Guntha = 4 Decimal boxes
+                cols = 2;        // Draw in 2 columns (2x2 grid per guntha)
+                boxSize = 55;
+                formulaText = `${toOdiaNum(1)} ${dict.units.guntha} ≈ ${toOdiaNum(42)}×${toOdiaNum(42)} ଫୁଟ (${toOdiaNum(1742.4)} ${dict.units.sqft})`;
+            } else if (visType === 'decimal') {
+                subUnit = 'biswa';
+                multiplier = 4;  // 1 Decimal = 4 Biswa boxes
+                cols = 2;        // Draw in 2 columns (2x2 grid per decimal)
+                boxSize = 50;
+                formulaText = `${toOdiaNum(1)} ${dict.units.decimal} = ${toOdiaNum(435.6)} ${dict.units.sqft}`;
+            }
+
+            // Total actual boxes to draw in the UI
+            let exactBoxes = targetVal * multiplier;
+            let totalBoxes = Math.round(exactBoxes);
+            const MAX_BOXES = 200; // Protection limit
+
+            let htmlContent = "";
+            let warningHtml = "";
+
+            if (totalBoxes === 0) {
+                htmlContent = `<div style="padding: 30px; color: #888; font-weight:bold; font-size:1.2rem;">${dict.noValue}</div>`;
+            } else if (totalBoxes > MAX_BOXES) {
+                // Render simplified consolidated view if grid is too massive
+                htmlContent = `
+                    <div class="visual-box" style="width: 250px; height: 160px; display:flex; align-items:center; justify-content:center; flex-direction:column; text-align:center; background:#E2B270; overflow:hidden;">
+                        <div style="font-size:2.2rem; color:#63401F; font-weight:bold;">${toOdiaNum(totalBoxes)}</div>
+                        <div style="font-size:1.2rem; color:#8B5A2B; font-weight:bold;">${dict.units[subUnit]}</div>
+                        <div style="font-size:0.85rem; color:#A67B48; margin-top:10px;">${dict.tooLarge}</div>
+                    </div>
+                `;
+            } else {
+                // Render the dynamic grid loops
+                htmlContent = `<div class="visual-box" style="grid-template-columns: repeat(${cols}, ${boxSize}px); justify-content: center; width: fit-content;">`;
+                for (let i = 1; i <= totalBoxes; i++) {
+                    htmlContent += `<div class="visual-grid-item" style="height: ${boxSize}px; width: ${boxSize}px;">${toOdiaNum(i)}</div>`;
+                }
+                htmlContent += `</div>`;
+                
+                // Show warning if fractional data is visually lost due to box rounding
+                if (Math.abs(exactBoxes - totalBoxes) > 0.01) {
+                    warningHtml = `<div class="warning-text">${dict.warningFraction}${toOdiaNum(totalBoxes)}).</div>`;
+                }
+            }
+
+            // Inject into DOM
+            container.innerHTML = `
+                <div class="visual-box-wrapper">
+                    ${htmlContent}
+                </div>
+                ${warningHtml}
+                <div class="dimension-text">${formulaText}</div>
+                <div class="summary-text">
+                    ${dict.total}: ${toOdiaNum(targetVal)} ${dict.units[visType]}
+                    <span class="summary-sqft">(= ${toOdiaNum(baseSqft)} ${dict.units.sqft})</span>
+                </div>
+            `;
+        }
+
+        // Initialize on load
+        window.onload = () => {
+            document.getElementById('currentYear').innerText = new Date().getFullYear();
+            
+            const queryString = window.location.search.toLowerCase();
+            if (queryString.includes('en')) {
+                setLanguage('en');
+            } else {
+                setLanguage('or');
+            }
+        };
+    </script>
+</body>
+</html>
